@@ -71,7 +71,7 @@ function App() {
       {/* HEADER SECTION */}
       <header>  
         <h1>Maternity Bag </h1>
-        <h2>For <a>Mommy</a> To Be</h2>
+        <h2>For Mommy To Be</h2>
       </header>
 
       {/* MAIN SECTION */}
