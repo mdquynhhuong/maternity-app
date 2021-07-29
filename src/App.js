@@ -2,7 +2,8 @@ import './App.css';
 import { useEffect, useState} from 'react';
 import firebase from './firebase';
 import { FaTrash } from "react-icons/fa";
-import { BiCheckCircle } from "react-icons/bi";
+
+
 
 function App() {
 
@@ -65,47 +66,50 @@ function App() {
     dbRef.child(keyOfItemDelete).remove();
   }
 
-  // To handle the complete when the complete button is clicked
-  // Once is clicked, the active state is true and will strike through item with css 
-
-const [ isActive , setActive ] = useState(false);
-const toggleClass = () => {
-  setActive(!isActive);
-}
-  
-
   return (
     <div className="App">
-      <h1>Maternity Bag </h1>
-      <h2>For Mommy To Be</h2>
-      <form className="todo-form" action="submit" onSubmit={handleSubmit}>
-        <label htmlFor="userItemChoice">Write item to add to the list </label>
-        <input 
-        type="text"
-        id="userItemChoice" 
-        onChange={handleChange}
-        value={userInput} />
-        
-        <button class="addItemBtn"> Add Item </button>
-      </form>
-      <ul>
-      {
-        bagList.map( (bagObject) => {
+      {/* HEADER SECTION */}
+      <header>  
+        <h1>Maternity Bag </h1>
+        <h2>For <a>Mommy</a> To Be</h2>
+      </header>
 
-          const defferedFunction = () => handleDelete(bagObject.key);
-          
-          return (
-              <li className="todo-row" key={bagObject.key}> 
-                <div className="todo-container">
-                  <p className={isActive ? 'strikethrough' : null}>{bagObject.title}</p>
-                  <BiCheckCircle onClick={toggleClass} className="completeBtn"></BiCheckCircle>
-                  <FaTrash onClick={defferedFunction} className="deleteBtn"></FaTrash>
-                </div>
-              </li>
-          )
-        })
-      }
-      </ul>
+      {/* MAIN SECTION */}
+      <main>  
+        <form className="todo-form" action="submit" onSubmit={handleSubmit}>
+          <input
+          className="itemInput" 
+          type="text"
+          placeholder="Add Items To Bag"
+          id="userItemChoice" 
+          onChange={handleChange}
+          value={userInput} />
+          <button class="addItemBtn"> Add Item </button>
+        </form>
+        {/* Print Out Section */}
+        <ul>
+        {
+          bagList.map( (bagObject) => {
+
+            const defferedFunction = () => handleDelete(bagObject.key);
+            
+            return (
+                <li className="todo-row" key={bagObject.key}> 
+                  <div className="todo-container">
+                    <p>{bagObject.title}</p>
+                    <FaTrash onClick={defferedFunction} className="deleteBtn"></FaTrash>
+                  </div>
+                </li>
+            )
+          })
+        }
+        </ul>
+      </main>
+
+      {/* FOOTER SECTION */}
+      <footer>
+        <p>Created by <a href="https://github.com/mdquynhhuong"> Huong Mai</a> at <a href="https://junocollege.com/">Juno College</a></p>
+      </footer>
     </div>
   );
 }
