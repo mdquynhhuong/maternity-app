@@ -193,3 +193,18 @@ footer a {
   }
 }
 
+@media (max-width: 736px) {
+  .App {
+    width: auto;
+  }
+  .todo-form {
+    display: flex;
+    flex-direction: column;
+  }
+  .addItemBtn {
+    margin-top: 10px;
+  }
+  .todo-form {
+    border:none;
+  }
+}

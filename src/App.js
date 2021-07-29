@@ -84,7 +84,7 @@ function App() {
           id="userItemChoice" 
           onChange={handleChange}
           value={userInput} />
-          <button class="addItemBtn"> Add Item </button>
+          <button className="addItemBtn"> Add Item </button>
         </form>
         {/* Print Out Section */}
         <ul>
